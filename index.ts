@@ -18,9 +18,15 @@ async function handler(_req: Request): Promise<Response> {
   const headers = new Headers();
   headers.append("Content-Type", "application/json");
 
+  const word2 = (
+    new URL(_req.url).searchParams.get("word") || "default"
+  ).toLowerCase();
+
+  console.log("word2: ", word2);
+
   const similarityRequestBody = JSON.stringify({
-    word1: "centrale",
-    word2: "supelec",
+    word1: "pikachu",
+    word2,
   });
 
   const requestOptions = {
